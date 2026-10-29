@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="門真市・東大阪市・大東市・大阪市鶴見区へ、2Lペットボトルの水を1本110円（税込）でご自宅までお届け。4ケース以上で配達料無料。ご注文は080-4485-9115へ。">
+<meta property="og:title" content="ウォーターデリバリー｜2Lの水を1本110円でお届け">
+<meta property="og:description" content="門真市・東大阪市・大東市・鶴見区へ、2Lペットボトルの水を1本110円（税込）で玄関までお届けします。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 28'%3E%3Cpath d='M11 1C11 1 2 12 2 18a9 9 0 0 0 18 0C20 12 11 1 11 1Z' fill='%230b7fa3'/%3E%3C/svg%3E">
+<title>ウォーターデリバリー｜門真・東大阪・大東・鶴見区の水の宅配</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: 縦一列のLP。上から「価格の約束 → 配達エリア → 注文の流れ → 料金例 → よくある質問 → お問い合わせ」。帯ごとに背景を切り替える */
+:root {
+  --bg: #f6fafb;
+  --surface: #ffffff;
+  --ink: #12303a;
+  --muted: #557079;
+  --line: #d6e4e8;
+  --water: #0b7fa3;
+  --water-deep: #075a75;
+  --water-soft: #e2f2f7;
+  --accent: #f2b418;
+  --ph-bg: #fff3c4;
+  --ph-ink: #7a5600;
+  --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", sans-serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1a1f; --surface: #12262d; --ink: #e4f1f4; --muted: #9db6bd; --line: #24414a;
+    --water: #4cc0e4; --water-deep: #0e4a5e; --water-soft: #163640; --accent: #f5c443;
+    --ph-bg: #3d3214; --ph-ink: #f5d27a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1a1f; --surface: #12262d; --ink: #e4f1f4; --muted: #9db6bd; --line: #24414a;
+  --water: #4cc0e4; --water-deep: #0e4a5e; --water-soft: #163640; --accent: #f5c443;
+  --ph-bg: #3d3214; --ph-ink: #f5d27a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.tel-link { color: inherit; text-decoration: none; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.85; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.35; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--water); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.band { padding-block: 72px; }
+.band.alt { background: var(--surface); border-block: 1px solid var(--line); }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: var(--water); }
+.sec-head { display: grid; gap: 8px; margin-bottom: 36px; }
+.sec-head h2 { font-size: clamp(24px, 4vw, 32px); }
+.sec-head p { color: var(--muted); max-width: 60ch; }
+.ph { background: var(--ph-bg); color: var(--ph-ink); padding: 0 .35em; border-radius: 4px; font-weight: 700; white-space: nowrap; }
+
+/* header */
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.logo { font-family: var(--font-display); font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+.logo svg { width: 22px; height: 28px; flex: none; }
+.head-tel { font-weight: 700; font-size: 15px; text-align: right; line-height: 1.3; }
+.head-tel small { display: block; font-size: 11px; color: var(--muted); font-weight: 500; }
+
+/* hero */
+.hero { padding-block: 56px 64px; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.hero-copy { display: grid; gap: 20px; min-width: 0; }
+.hero h1 { font-size: clamp(30px, 5.4vw, 50px); font-weight: 900; }
+.hero h1 em { font-style: normal; color: var(--water); }
+.hero-lead { color: var(--muted); font-size: 17px; max-width: 34em; }
+.area-pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.area-pills li { border: 1.5px solid var(--water); color: var(--water); border-radius: 999px; padding: 2px 14px; font-weight: 700; font-size: 14px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; padding: 14px 24px; border-radius: 12px; font-size: 16px; }
+.btn.primary { background: var(--water); color: #fff; }
+.btn.line { background: #06c755; color: #fff; }
+
+.price-card { position: relative; background: var(--water-deep); color: #fff; border-radius: 28px; padding: 36px 28px 32px; text-align: center; isolation: isolate; overflow: hidden; }
+.price-card::before { content: ""; position: absolute; inset: auto -20% -40% -20%; height: 70%; background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.18), transparent 70%); z-index: -1; }
+.price-card .unit { font-size: 15px; letter-spacing: .1em; opacity: .9; }
+.price-card .yen { font-family: var(--font-display); font-weight: 900; font-size: clamp(72px, 13vw, 112px); line-height: 1; font-variant-numeric: tabular-nums; }
+.price-card .yen span { font-size: .32em; margin-left: 4px; }
+.price-card .tax { display: inline-block; margin-top: 10px; background: var(--accent); color: #2a1f00; font-weight: 700; border-radius: 999px; padding: 2px 16px; font-size: 14px; }
+.price-card .note { margin-top: 16px; font-size: 13px; opacity: .85; }
+.price-card canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+/* points */
+.points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.point { display: grid; gap: 10px; align-content: start; padding: 24px; border-radius: 18px; background: var(--water-soft); min-width: 0; }
+.point h3 { font-size: 19px; }
+.point p { color: var(--muted); font-size: 15px; }
+.point .ico { width: 40px; height: 40px; color: var(--water); }
+
+/* area */
+.area-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+.area-map { width: 100%; max-width: 100%; height: auto; }
+.area-map .city { fill: var(--water-soft); stroke: var(--water); stroke-width: 2; }
+.area-map .city.osaka { fill: var(--surface); stroke: var(--line); stroke-dasharray: 4 4; }
+.area-map text { fill: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.area-map text.sub { fill: var(--muted); font-size: 12px; font-weight: 500; }
+.area-list { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.area-list li { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.area-list b { font-family: var(--font-display); font-size: 19px; }
+.area-list span { color: var(--muted); font-size: 14px; text-align: right; }
+.area-foot { margin-top: 16px; color: var(--muted); font-size: 14px; }
+
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; padding: 0; margin: 0; counter-reset: s; }
+.steps li { counter-increment: s; position: relative; padding: 28px 24px 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.steps li::before { content: "STEP " counter(s); font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--water); }
+.steps h3 { font-size: 19px; }
+.steps p { color: var(--muted); font-size: 15px; }
+
+/* price table */
+.table-box { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 420px; }
+th, td { padding: 14px 20px; text-align: left; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: .05em; background: var(--water-soft); }
+td.num { text-align: right; font-weight: 700; font-size: 18px; }
+th.num { text-align: right; }
+.calc { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 20px 24px; border-radius: 16px; background: var(--water-soft); }
+.calc label { font-weight: 700; }
+.calc input { width: 6em; font: inherit; font-size: 18px; padding: 6px 10px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); text-align: right; }
+.calc output { font-family: var(--font-display); font-weight: 900; font-size: 26px; color: var(--water); font-variant-numeric: tabular-nums; }
+.conditions { margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.conditions div { padding: 16px 20px; border-left: 3px solid var(--water); background: var(--surface); }
+.conditions dt { font-size: 13px; color: var(--muted); font-weight: 700; }
+.conditions dd { margin: 4px 0 0; font-weight: 700; }
+
+/* faq */
+.faq { display: grid; gap: 12px; max-width: 760px; }
+.faq details { border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
+.faq summary { cursor: pointer; padding: 18px 20px; font-weight: 700; list-style: none; display: flex; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: "Q"; font-family: var(--font-display); color: var(--water); font-weight: 900; }
+.faq details p { padding: 0 20px 18px 46px; color: var(--muted); }
+
+/* contact */
+.contact { background: var(--water-deep); color: #fff; }
+.contact .eyebrow { color: var(--accent); }
+.contact .sec-head p { color: rgba(255,255,255,.8); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.contact-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 18px; padding: 24px; display: grid; gap: 8px; min-width: 0; }
+.contact-card h3 { font-size: 16px; opacity: .85; }
+.contact-card .big { font-family: var(--font-display); font-size: clamp(24px, 4vw, 30px); font-weight: 900; word-break: break-all; }
+.contact-card small { opacity: .75; }
+.contact .ph { background: var(--accent); color: #2a1f00; }
+.copy { justify-self: start; font: inherit; font-size: 13px; font-weight: 700; background: #fff; color: var(--water-deep); border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+
+footer { padding-block: 32px; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+@media (max-width: 820px) {
+  .hero-grid, .area-grid, .contact-grid { grid-template-columns: 1fr; }
+  .points, .steps { grid-template-columns: 1fr; }
+  .band { padding-block: 56px; }
+}
+@media (max-width: 480px) {
+  .head-tel small { display: none; }
+  .logo { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 22 28" aria-hidden="true"><path d="M11 1C11 1 2 12 2 18a9 9 0 0 0 18 0C20 12 11 1 11 1Z" fill="currentColor" style="color:var(--water)"/></svg>
+      <span>ウォーターデリバリー</span>
+    </div>
+    <div class="head-tel"><small>ご注文・お問い合わせ</small><a class="tel-link" href="tel:08044859115">080-4485-9115</a></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">門真・東大阪・大東・鶴見区のお水屋さん</p>
+        <h1>重たいお水は、<br><em>玄関まで</em>お届けします。</h1>
+        <p class="hero-lead">2Lペットボトルの水を、1本110円（税込）でご自宅までお届け。4ケース以上で配達料は無料です。スーパーから重い箱を運ぶ手間がなくなります。</p>
+        <ul class="area-pills" aria-label="配達エリア">
+          <li>門真市</li><li>東大阪市</li><li>大東市</li><li>大阪市鶴見区</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn primary" href="tel:08044859115">電話で注文する　080-4485-9115</a>
+        </div>
+      </div>
+      <div class="price-card" aria-label="価格">
+        <canvas id="ripple" aria-hidden="true"></canvas>
+        <p class="unit">2Lペットボトル 1本</p>
+        <p class="yen">110<span>円</span></p>
+        <p class="tax">消費税込み</p>
+        <p class="note">4ケース（24本）以上で配達料無料</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" aria-labelledby="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">選ばれる理由</p>
+        <h2 id="why">わかりやすい価格と、地元ならではの近さ</h2>
+      </div>
+      <div class="points">
+        <div class="point">
+          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M14 13l6 8 6-8M13 21h14M13 26h14M20 21v9"/></svg>
+          <h3>1本110円、税込みで明朗</h3>
+          <p>本数×110円がそのままお支払い額。あとから税金が上乗せされることはありません。</p>
+        </div>
+        <div class="point">
+          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19L20 7l14 12"/><path d="M10 16v17h20V16"/><path d="M17 33v-9h6v9"/></svg>
+          <h3>玄関先までお届け</h3>
+          <p>マンションの上の階でも大丈夫。重たい箱を持ち運ぶ必要はありません。</p>
+        </div>
+        <div class="point">
+          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 35s11-10 11-19a11 11 0 0 0-22 0c0 9 11 19 11 19Z"/><circle cx="20" cy="16" r="4"/></svg>
+          <h3>エリアを絞った地域密着</h3>
+          <p>門真市・東大阪市・大東市・鶴見区に限定しているので、小回りのきくお届けができます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="area">
+    <div class="wrap area-grid">
+      <div>
+        <div class="sec-head">
+          <p class="eyebrow">配達エリア</p>
+          <h2 id="area">この4つの地域にお届けします</h2>
+        </div>
+        <ul class="area-list">
+          <li><b>門真市</b><span>全域</span></li>
+          <li><b>東大阪市</b><span>全域</span></li>
+          <li><b>大東市</b><span>全域</span></li>
+          <li><b>大阪市鶴見区</b><span>全域</span></li>
+        </ul>
+        <p class="area-foot">エリア外の方もお気軽にご相談ください。</p>
+      </div>
+      <svg class="area-map" viewBox="0 0 440 340" role="img" aria-label="配達エリアの位置関係（イメージ）">
+        <path class="city osaka" d="M14 120 L104 104 L112 196 L22 214 Z"/>
+        <text class="sub" x="34" y="166">大阪市中心部</text>
+        <path class="city" d="M112 96 L196 84 L204 176 L120 188 Z"/>
+        <text x="132" y="142">鶴見区</text>
+        <path class="city" d="M196 40 L300 26 L312 120 L204 134 Z"/>
+        <text x="226" y="86">門真市</text>
+        <path class="city" d="M300 26 L420 40 L420 168 L312 170 Z"/>
+        <text x="338" y="106">大東市</text>
+        <path class="city" d="M120 188 L204 176 L204 134 L312 120 L312 170 L420 168 L420 312 L132 324 Z"/>
+        <text x="236" y="252">東大阪市</text>
+        <text class="sub" x="300" y="334">※位置関係のイメージです</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="band alt" aria-labelledby="flow">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">ご注文の流れ</p>
+        <h2 id="flow">お電話で、かんたん3ステップ</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>ご注文</h3><p>お電話で「お名前・ご住所・本数・ご希望日」をお知らせください。</p></li>
+        <li><h3>お届け</h3><p>毎週水曜日の9:00〜20:00に、ご自宅の玄関先までお持ちします。</p></li>
+        <li><h3>お支払い</h3><p>お受け取りのときに、現金・PayPay・クレジットカードでお支払いください。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="price">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">料金</p>
+        <h2 id="price">本数×110円。それだけです。</h2>
+        <p>2Lペットボトル1ケース6本入り。4ケース（24本）からのご注文で、配達料は無料です。表示はすべて消費税込みの金額です。</p>
+      </div>
+      <div class="table-box">
+        <table>
+          <thead><tr><th>ケース数</th><th>本数（2L）</th><th class="num">お支払い（税込）</th></tr></thead>
+          <tbody>
+            <tr><td>4ケース</td><td>24本</td><td class="num">2,640円</td></tr>
+            <tr><td>5ケース</td><td>30本</td><td class="num">3,300円</td></tr>
+            <tr><td>6ケース</td><td>36本</td><td class="num">3,960円</td></tr>
+            <tr><td>8ケース</td><td>48本</td><td class="num">5,280円</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="calc">
+        <label for="qty">ケース数を入れて計算</label>
+        <input id="qty" type="number" min="4" max="99" value="4" inputmode="numeric">
+        <span>ケース ＝</span>
+        <output id="total" for="qty">24本　2,640円</output>
+      </div>
+      <dl class="conditions">
+        <div><dt>最低注文本数</dt><dd>4ケース（24本）から</dd></div>
+        <div><dt>配達料</dt><dd>無料</dd></div>
+        <div><dt>配達曜日</dt><dd>毎週水曜日 9:00〜20:00</dd></div>
+        <div><dt>お支払い方法</dt><dd>現金・PayPay・クレジットカード</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band alt" aria-labelledby="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">よくあるご質問</p>
+        <h2 id="faq">ご注文の前に</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>何本から届けてもらえますか？</summary><p>2Lペットボトル4ケース（24本・2,640円）からお届けします。配達料は無料です。</p></details>
+        <details><summary>どんな支払い方法がありますか？</summary><p>お受け取りのときに、現金・PayPay・クレジットカードでお支払いいただけます。</p></details>
+        <details><summary>定期的に届けてもらうことはできますか？</summary><p>はい。「毎週水曜日に4ケース」のように決めていただければ、毎回ご連絡いただかなくてもお届けします。</p></details>
+        <details><summary>留守のときはどうなりますか？</summary><p>事前にご指定いただければ、玄関前などに置いてお届けすることもできます。</p></details>
+        <details><summary>注文してから何日で届きますか？</summary><p>ご注文から3日ほどお時間をいただき、その後の水曜日（9:00〜20:00）にお届けします。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">ご注文・お問い合わせ</p>
+        <h2 id="contact-h">お気軽にご連絡ください</h2>
+        <p>お電話で「お名前・ご住所・ケース数・ご希望日」をお伝えいただくとスムーズです。</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>お電話</h3>
+          <p class="big"><a class="tel-link" id="tel-text" href="tel:08044859115">080-4485-9115</a></p>
+          <small>24時間いつでも受け付けています</small>
+          <button class="copy" type="button" data-copy="tel-text">番号をコピー</button>
+        </div>
+        <div class="contact-card">
+          <h3>所在地</h3>
+          <p class="big" style="font-size:clamp(18px,3vw,22px)">大阪府門真市三ツ島5-23-14</p>
+          <small>LINE公式アカウントは準備中です</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>ウォーターデリバリー　大阪府門真市三ツ島5-23-14　TEL 080-4485-9115</span>
+    <span>配達エリア：門真市・東大阪市・大東市・大阪市鶴見区</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var qty = document.getElementById('qty');
+  var total = document.getElementById('total');
+  function update() {
+    var n = Math.max(0, Math.floor(Number(qty.value) || 0));
+    total.textContent = n < 4 ? '4ケースからご注文いただけます' : (n * 6) + '本　' + (n * 6 * 110).toLocaleString('ja-JP') + '円';
+  }
+  qty.addEventListener('input', update);
+  update();
+
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.copy);
+      var label = btn.textContent;
+      function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = label; }, 1600); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        done('選択しました');
+      }
+      try {
+        navigator.clipboard.writeText(el.textContent.trim()).then(function () { done('コピーしました'); }, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+
+  // 価格カードの背景に、ゆっくり広がる水の波紋
+  var c = document.getElementById('ripple');
+  var ctx = c.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size() { var r = c.getBoundingClientRect(); c.width = r.width * devicePixelRatio; c.height = r.height * devicePixelRatio; }
+  size(); window.addEventListener('resize', size);
+  function draw(t) {
+    ctx.clearRect(0, 0, c.width, c.height);
+    var cx = c.width * 0.5, cy = c.height * 0.55, max = Math.max(c.width, c.height) * 0.75;
+    for (var i = 0; i < 4; i++) {
+      var p = ((t / 5200) + i / 4) % 1;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, p * max, p * max * 0.55, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255,255,255,' + (0.16 * (1 - p)) + ')';
+      ctx.lineWidth = 2 * devicePixelRatio;
+      ctx.stroke();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  draw(1300);
+  if (!reduce) requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
