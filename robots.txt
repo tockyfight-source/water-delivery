@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tockyfight-source.github.io/water-delivery/sitemap.xml
