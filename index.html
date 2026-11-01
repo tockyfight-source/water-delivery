@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="門真市・東大阪市・大東市・大阪市鶴見区へ、2Lペットボトルの水を1本110円（税込）でご自宅までお届け。4ケース以上で配達料無料。ご注文は080-4485-9115へ。">
-<meta property="og:title" content="ウォーターデリバリー｜2Lの水を1本110円でお届け">
-<meta property="og:description" content="門真市・東大阪市・大東市・鶴見区へ、2Lペットボトルの水を1本110円（税込）で玄関までお届けします。">
+<meta name="description" content="契約なし・解約の手間なし。門真市・東大阪市・大東市・大阪市鶴見区へ、2Lペットボトルの水を1本110円（税込）で玄関までお届け。団地の階段も、離れて暮らすご家族へのお届けもおまかせ。080-4485-9115">
+<meta property="og:title" content="ウォーターデリバリー｜お水と一緒に、安心もお届け">
+<meta property="og:description" content="2Lの水を1本110円（税込）で玄関まで。契約なし、団地の階段もおまかせ、ご家族へご様子もお伝えします。">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 28'%3E%3Cpath d='M11 1C11 1 2 12 2 18a9 9 0 0 0 18 0C20 12 11 1 11 1Z' fill='%230b7fa3'/%3E%3C/svg%3E">
 <title>ウォーターデリバリー｜門真・東大阪・大東・鶴見区の水の宅配</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <style>
-/* Layout: 深い水色のヒーロー（泡・波・揺れるボトル）→ 流れるテロップ帯 → 理由 → エリア（走るトラック）→ 流れ → 料金 → FAQ → 連絡先。スマホは下部に電話バー固定 */
+/* Layout: 明るい空色のヒーロー（泡・波・揺れるボトル）→ テロップ → 想い → 3つの約束 → ご家族の方へ → サーバーとの違い → エリア → 流れ → 料金 → FAQ → 連絡先。スマホは下部に電話バー固定 */
 :root {
   --bg: #f4f9fb;
   --surface: #ffffff;
@@ -25,19 +25,22 @@
   --aqua: #5fd3f0;
   --accent: #ffc21a;
   --on-deep: #ffffff;
+  --sky: #dff4fc;
+  --sky2: #bfe8f8;
+  --warm: #fff6dc;
   --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", sans-serif;
   --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0b1a20; --surface: #11252c; --ink: #e3f1f5; --muted: #9bb5bd; --line: #23414a;
-    --water: #4cc3e8; --water-deep: #073f53; --water-night: #032a38; --water-soft: #15343e; --aqua: #7fe0f7; --accent: #ffcb3d;
+    --water: #4cc3e8; --water-deep: #073f53; --water-night: #032a38; --water-soft: #15343e; --aqua: #7fe0f7; --accent: #ffcb3d; --sky: #0f2e38; --sky2: #144a59; --warm: #2e2814;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0b1a20; --surface: #11252c; --ink: #e3f1f5; --muted: #9bb5bd; --line: #23414a;
-  --water: #4cc3e8; --water-deep: #073f53; --water-night: #032a38; --water-soft: #15343e; --aqua: #7fe0f7; --accent: #ffcb3d;
+  --water: #4cc3e8; --water-deep: #073f53; --water-night: #032a38; --water-soft: #15343e; --aqua: #7fe0f7; --accent: #ffcb3d; --sky: #0f2e38; --sky2: #144a59; --warm: #2e2814;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -60,29 +63,29 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 main { overflow-x: clip; }
 
 /* header */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--water-night); }
-.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: color-mix(in srgb, var(--water-night) 88%, transparent); backdrop-filter: blur(10px); color: var(--on-deep); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--surface); }
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: color-mix(in srgb, var(--surface) 90%, transparent); backdrop-filter: blur(10px); color: var(--ink); border-bottom: 1px solid var(--line); }
 .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
 .logo { font-family: var(--font-display); font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 8px; }
 .logo svg { width: 20px; height: 26px; flex: none; animation: drip 2.8s ease-in-out infinite; }
 .head-tel { font-weight: 700; font-size: 15px; text-align: right; line-height: 1.3; color: inherit; text-decoration: none; }
-.head-tel small { display: block; font-size: 11px; opacity: .75; font-weight: 500; }
+.head-tel small { display: block; font-size: 11px; color: var(--muted); font-weight: 500; }
 
 /* hero */
-.hero { position: relative; overflow: hidden; color: var(--on-deep); background: radial-gradient(120% 90% at 80% 10%, #0f9cc6 0%, var(--water-deep) 45%, var(--water-night) 100%); padding-block: 64px 150px; isolation: isolate; }
+.hero { position: relative; overflow: hidden; color: var(--ink); background: radial-gradient(110% 90% at 85% 0%, var(--sky2) 0%, var(--sky) 45%, var(--bg) 100%); padding-block: 64px 150px; isolation: isolate; }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: center; }
 .hero-copy { display: grid; gap: 22px; min-width: 0; }
-.hero .eyebrow { color: var(--aqua); }
+.hero .eyebrow { color: var(--water); }
 .hero h1 { font-size: clamp(36px, 6.6vw, 68px); font-weight: 900; letter-spacing: .01em; }
 .hero h1 .line { display: block; overflow: hidden; }
 .hero h1 .line > span { display: inline-block; animation: rise .9s cubic-bezier(.2,.8,.2,1) both; }
 .hero h1 .line:nth-child(2) > span { animation-delay: .15s; }
-.hero h1 em { font-style: normal; color: var(--accent); position: relative; }
+.hero h1 em { font-style: normal; color: var(--water); position: relative; }
 .hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .14em; background: var(--accent); border-radius: 99px; transform-origin: left; animation: swipe .8s .9s cubic-bezier(.2,.8,.2,1) both; opacity: .5; }
-.hero-lead { font-size: 17px; max-width: 32em; opacity: .9; animation: fadeup .8s .35s both; }
+.hero-lead { font-size: 17px; max-width: 32em; color: var(--muted); animation: fadeup .8s .35s both; }
 .area-pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-.area-pills li { border: 1.5px solid rgba(255,255,255,.55); border-radius: 999px; padding: 3px 14px; font-weight: 700; font-size: 14px; animation: pop .5s both; }
+.area-pills li { border: 1.5px solid var(--water); color: var(--water); background: var(--surface); border-radius: 999px; padding: 3px 14px; font-weight: 700; font-size: 14px; animation: pop .5s both; }
 .area-pills li:nth-child(1) { animation-delay: .5s; } .area-pills li:nth-child(2) { animation-delay: .6s; }
 .area-pills li:nth-child(3) { animation-delay: .7s; } .area-pills li:nth-child(4) { animation-delay: .8s; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; animation: fadeup .8s .7s both; }
@@ -93,7 +96,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .btn svg { width: 20px; height: 20px; flex: none; }
 
 .hero-visual { position: relative; display: grid; place-items: center; min-height: 360px; }
-.bottle { width: min(170px, 42vw); height: auto; animation: bob 4s ease-in-out infinite; filter: drop-shadow(0 30px 30px rgba(0,0,0,.25)); }
+.bottle { width: min(170px, 42vw); height: auto; animation: bob 4s ease-in-out infinite; filter: drop-shadow(0 26px 24px rgba(6,80,106,.25)); }
 .bottle .water-surface { animation: slosh 3s ease-in-out infinite; transform-origin: 50% 50%; }
 .price-badge { position: absolute; right: 2%; top: 4%; width: 168px; height: 168px; border-radius: 50%; background: var(--accent); color: #2b1d00; display: grid; place-content: center; text-align: center; transform: rotate(8deg); animation: badge 1s .4s cubic-bezier(.3,1.6,.5,1) both, wobble 5s 1.4s ease-in-out infinite; box-shadow: 0 14px 30px -10px rgba(0,0,0,.4); }
 .price-badge small { font-size: 13px; font-weight: 700; }
@@ -128,6 +131,51 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .point:hover .ico svg { animation: jiggle .5s; }
 .point .ico svg { width: 30px; height: 30px; }
 .points .point:nth-child(2) { transition-delay: .08s; } .points .point:nth-child(3) { transition-delay: .16s; }
+
+/* story */
+.story { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+.story h2 { font-size: clamp(26px, 4.4vw, 38px); font-weight: 900; }
+.story-text { display: grid; gap: 18px; min-width: 0; }
+.story-text p { color: var(--muted); font-size: 17px; }
+.story-text p strong { color: var(--ink); background: linear-gradient(transparent 62%, color-mix(in srgb, var(--accent) 55%, transparent) 62%); }
+.voices { display: grid; gap: 14px; }
+.voice { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 16px 20px; font-weight: 700; line-height: 1.6; max-width: 26em; box-shadow: 0 16px 30px -26px rgba(6,80,106,.6); animation: float 6s ease-in-out infinite; }
+.voice small { display: block; font-weight: 500; color: var(--muted); font-size: 13px; margin-top: 4px; }
+.voice:nth-child(2) { justify-self: end; animation-delay: -2s; }
+.voice:nth-child(3) { animation-delay: -4s; }
+.voice::after { content: ""; position: absolute; bottom: -9px; left: 28px; width: 16px; height: 16px; background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(45deg); }
+.voice:nth-child(2)::after { left: auto; right: 28px; }
+.voice .ans { color: var(--water); }
+
+/* family */
+.family { background: var(--warm); }
+.family-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.family .eyebrow { color: #b07a00; }
+.family-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+.family-list li { display: flex; gap: 12px; align-items: baseline; font-weight: 700; }
+.family-list li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); transform: translateY(-2px); }
+.family-note { margin-top: 18px; font-size: 13px; color: var(--muted); }
+.phone-mock { justify-self: center; width: min(320px, 100%); background: var(--surface); border-radius: 32px; padding: 20px 16px 24px; border: 1px solid var(--line); box-shadow: 0 30px 60px -36px rgba(80,60,0,.5); display: grid; gap: 12px; }
+.phone-mock .bar { text-align: center; font-size: 12px; color: var(--muted); font-weight: 700; }
+.msg { border-radius: 18px; padding: 12px 14px; font-size: 14px; line-height: 1.65; max-width: 88%; }
+.msg.them { background: var(--water-soft); border-bottom-left-radius: 4px; }
+.msg.me { background: var(--accent); color: #2b1d00; justify-self: end; border-bottom-right-radius: 4px; }
+.msg time { display: block; font-size: 11px; opacity: .7; margin-top: 2px; }
+.msg.typing { display: inline-flex; gap: 4px; padding: 14px; }
+.msg.typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--water); animation: blink 1.2s infinite; }
+.msg.typing i:nth-child(2) { animation-delay: .2s; } .msg.typing i:nth-child(3) { animation-delay: .4s; }
+.phone-mock .ex { font-size: 11px; color: var(--muted); text-align: center; }
+
+/* compare */
+.cmp-box { overflow-x: auto; border-radius: 22px; border: 1px solid var(--line); background: var(--surface); }
+.cmp { width: 100%; border-collapse: collapse; min-width: 520px; }
+.cmp th, .cmp td { padding: 16px 20px; border-bottom: 1px solid var(--line); text-align: left; }
+.cmp tr:last-child td { border-bottom: 0; }
+.cmp thead th { font-size: 14px; color: var(--muted); background: var(--bg); }
+.cmp thead th.us { background: var(--water); color: #fff; font-family: var(--font-display); font-size: 17px; }
+.cmp td.us { background: color-mix(in srgb, var(--water-soft) 70%, transparent); font-weight: 700; color: var(--water); }
+.cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.cmp-note { margin-top: 12px; font-size: 13px; color: var(--muted); }
 
 /* area */
 .area-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px; align-items: center; }
@@ -199,24 +247,24 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .faq details p { padding: 0 20px 18px 46px; color: var(--muted); animation: fadeup .4s both; }
 
 /* contact */
-.contact { color: var(--on-deep); background: linear-gradient(160deg, var(--water-deep), var(--water-night)); overflow: hidden; isolation: isolate; }
-.contact .bubble { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), rgba(255,255,255,.04)); z-index: -1; animation: up 12s linear infinite; bottom: -120px; }
-.contact .eyebrow { color: var(--accent); }
-.contact .sec-head p { color: rgba(255,255,255,.82); }
+.contact { color: var(--ink); background: linear-gradient(170deg, var(--sky), var(--bg)); overflow: hidden; isolation: isolate; }
+.contact .bubble { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(10,134,173,.12)); border: 1px solid rgba(10,134,173,.2); z-index: -1; animation: up 12s linear infinite; bottom: -120px; }
+.contact .eyebrow { color: var(--water); }
+.contact .sec-head p { color: var(--muted); }
 .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
-.contact-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 24px; padding: 28px; display: grid; gap: 10px; min-width: 0; backdrop-filter: blur(4px); }
-.contact-card h3 { font-size: 15px; opacity: .85; }
-.contact-card .big { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); font-weight: 900; word-break: break-all; line-height: 1.2; }
+.contact-card { background: var(--surface); border: 1px solid var(--line); box-shadow: 0 20px 40px -30px rgba(6,80,106,.5); border-radius: 24px; padding: 28px; display: grid; gap: 10px; min-width: 0; backdrop-filter: blur(4px); }
+.contact-card h3 { font-size: 15px; color: var(--muted); }
+.contact-card .big { color: var(--water); font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); font-weight: 900; word-break: break-all; line-height: 1.2; }
 .contact-card .addr { font-family: var(--font-display); font-size: clamp(18px, 3vw, 22px); font-weight: 700; }
-.contact-card small { opacity: .78; }
+.contact-card small { color: var(--muted); }
 .tel-link { color: inherit; text-decoration: none; }
-.copy { justify-self: start; font: inherit; font-size: 13px; font-weight: 700; background: #fff; color: var(--water-deep); border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; }
+.copy { justify-self: start; font: inherit; font-size: 13px; font-weight: 700; background: var(--water); color: #fff; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; }
 
 footer { padding-block: 32px 110px; font-size: 13px; color: var(--muted); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
 
 /* mobile call bar */
-.callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--water-night) 94%, transparent); backdrop-filter: blur(8px); }
+.callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
 .callbar a { display: flex; justify-content: center; align-items: center; gap: 10px; background: var(--accent); color: #2b1d00; font-weight: 900; font-family: var(--font-display); font-size: 18px; text-decoration: none; border-radius: 999px; padding: 12px; }
 .callbar svg { width: 20px; height: 20px; animation: jiggle 1.6s infinite; }
 
@@ -239,10 +287,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--water) 55%, transparent); } 70%,100% { box-shadow: 0 0 0 16px transparent; } }
 @keyframes bump { 50% { transform: scale(1.18); } }
+@keyframes blink { 0%,80%,100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
 @keyframes up { from { transform: translateY(0); } to { transform: translateY(-900px); } }
 
 @media (max-width: 860px) {
-  .hero-grid, .area-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-grid, .area-grid, .contact-grid, .story, .family-grid { grid-template-columns: 1fr; }
   .points, .steps { grid-template-columns: 1fr; }
   .cases { grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
   .band { padding-block: 64px; }
@@ -267,7 +316,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <header class="site-head">
   <div class="wrap">
     <div class="logo">
-      <svg viewBox="0 0 22 28" aria-hidden="true"><path d="M11 1C11 1 2 12 2 18a9 9 0 0 0 18 0C20 12 11 1 11 1Z" fill="#5fd3f0"/></svg>
+      <svg viewBox="0 0 22 28" aria-hidden="true"><path d="M11 1C11 1 2 12 2 18a9 9 0 0 0 18 0C20 12 11 1 11 1Z" fill="#0a86ad"/></svg>
       <span>ウォーターデリバリー</span>
     </div>
     <a class="head-tel" href="tel:08044859115"><small>ご注文・お問い合わせ（24時間）</small>080-4485-9115</a>
@@ -280,8 +329,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">門真・東大阪・大東・鶴見区のお水屋さん</p>
-        <h1><span class="line"><span>重たいお水は、</span></span><span class="line"><span><em>玄関まで</em>お届け！</span></span></h1>
-        <p class="hero-lead">2Lペットボトルの水を、1本110円（税込）でご自宅までお届け。4ケース以上で配達料は無料です。スーパーから重い箱を運ぶのは、もう終わりにしましょう。</p>
+        <h1><span class="line"><span>お水と一緒に、</span></span><span class="line"><span><em>安心</em>もお届け。</span></span></h1>
+        <p class="hero-lead">2Lペットボトルの水を1本110円（税込）で玄関まで。契約も解約の手間もなく、必要なときに必要な分だけ注文できます。団地の階段も、離れて暮らすご家族へのお届けもおまかせください。</p>
         <ul class="area-pills" aria-label="配達エリア">
           <li>門真市</li><li>東大阪市</li><li>大東市</li><li>大阪市鶴見区</li>
         </ul>
@@ -301,7 +350,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </defs>
           <rect x="42" y="6" width="36" height="22" rx="5" fill="#0a86ad"/>
           <rect x="42" y="14" width="36" height="3" fill="#06506a"/>
-          <path d="M44 30h32v22c0 10 24 22 24 48v178c0 8-6 14-14 14H34c-8 0-14-6-14-14V100c0-26 24-38 24-48Z" fill="url(#glass)" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
+          <path d="M44 30h32v22c0 10 24 22 24 48v178c0 8-6 14-14 14H34c-8 0-14-6-14-14V100c0-26 24-38 24-48Z" fill="url(#glass)" stroke="#0a86ad" stroke-opacity=".45" stroke-width="2"/>
           <g clip-path="url(#bodyclip)">
             <g class="water-surface"><rect x="0" y="96" width="120" height="210" fill="url(#liquid)"/><ellipse cx="60" cy="96" rx="60" ry="6" fill="#aef0ff"/></g>
             <rect x="20" y="150" width="80" height="62" fill="#ffffff"/>
@@ -327,34 +376,99 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>2L 1本110円（税込）</span><span>4ケース以上 配達料無料</span><span>門真市・東大阪市・大東市・鶴見区</span><span>毎週水曜日にお届け</span><span>電話受付24時間</span>
-      <span>2L 1本110円（税込）</span><span>4ケース以上 配達料無料</span><span>門真市・東大阪市・大東市・鶴見区</span><span>毎週水曜日にお届け</span><span>電話受付24時間</span>
+      <span>2L 1本110円（税込）</span><span>契約なし・解約の手間なし</span><span>団地の階段もおまかせ</span><span>ご家族へ様子をお伝え</span><span>4ケース以上 配達料無料</span><span>門真市・東大阪市・大東市・鶴見区</span>
+      <span>2L 1本110円（税込）</span><span>契約なし・解約の手間なし</span><span>団地の階段もおまかせ</span><span>ご家族へ様子をお伝え</span><span>4ケース以上 配達料無料</span><span>門真市・東大阪市・大東市・鶴見区</span>
     </div>
   </div>
 
-  <section class="band" aria-labelledby="why">
+  <section class="band" aria-labelledby="story">
+    <div class="wrap story">
+      <div class="story-text reveal">
+        <p class="eyebrow">わたしたちの想い</p>
+        <h2 id="story">「お水、重たいなぁ」を<br>なくしたくて。</h2>
+        <p>ウォーターサーバーは便利ですが、<strong>契約や解約の手続きが面倒</strong>だったり、使う量が合わなかったりします。</p>
+        <p>エレベーターのない団地で、<strong>水の箱を何階も運ぶのはしんどい</strong>。離れて暮らすおばあちゃんが、重い水を買いに行っていないか心配。</p>
+        <p>そんな声に応えたくて、ウォーターデリバリーを始めました。<strong>必要なときに、必要な分だけ</strong>。体力に自信のあるスタッフが、玄関までお届けします。</p>
+      </div>
+      <div class="voices reveal" aria-label="よく聞くお困りごと">
+        <p class="voice">サーバーの解約、手続きが面倒で…<small class="ans">→ 契約なし。注文したいときだけ電話1本です</small></p>
+        <p class="voice">団地の4階まで運ぶのがつらい<small class="ans">→ 階段でもスタッフが玄関まで運びます</small></p>
+        <p class="voice">実家の母がちゃんと水を飲めてるか心配<small class="ans">→ お届けして、ご様子を簡単にお伝えします</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" aria-labelledby="why">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">選ばれる理由</p>
-        <h2 id="why">わかりやすい価格と、地元ならではの近さ</h2>
+        <p class="eyebrow">3つの約束</p>
+        <h2 id="why">ウォーターデリバリーが大切にしていること</h2>
       </div>
       <div class="points">
         <div class="point reveal">
-          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M14 13l6 8 6-8M13 21h14M13 26h14M20 21v9"/></svg></div>
-          <h3>1本110円、税込みで明朗</h3>
-          <p>本数×110円がそのままお支払い額。あとから税金が上乗せされることはありません。</p>
+          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5h14l7 7v23H10Z"/><path d="M24 5v7h7"/><path d="M15 21l10 10M25 21L15 31"/></svg></div>
+          <h3>契約なし、解約の手間なし</h3>
+          <p>サーバーの設置も定期契約もありません。必要なときにお電話いただければ、その分だけお届けします。1本110円（税込）の明朗価格です。</p>
         </div>
         <div class="point reveal">
-          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19L20 7l14 12"/><path d="M10 16v17h20V16"/><path d="M17 33v-9h6v9"/></svg></div>
-          <h3>玄関先までお届け</h3>
-          <p>マンションの上の階でも大丈夫。重たい箱を持ち運ぶ必要はありません。</p>
+          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 34h8v-7h7v-7h7v-7h8"/><path d="M27 6v6M24 9h6"/></svg></div>
+          <h3>団地の階段もおまかせ</h3>
+          <p>エレベーターのない団地や上の階でも大丈夫。体力に自信のあるスタッフが、重たい水を玄関まで運びます。</p>
         </div>
         <div class="point reveal">
-          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 35s11-10 11-19a11 11 0 0 0-22 0c0 9 11 19 11 19Z"/><circle cx="20" cy="16" r="4"/></svg></div>
-          <h3>エリアを絞った地域密着</h3>
-          <p>門真市・東大阪市・大東市・鶴見区に限定しているので、小回りのきくお届けができます。</p>
+          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 34S6 25 6 15a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 10-14 19-14 19Z"/></svg></div>
+          <h3>ご家族へ、ご様子をお伝え</h3>
+          <p>離れて暮らすご家族のお宅へお届けしたとき、お元気そうだったかなどを簡単にお伝えします。</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="band family" aria-labelledby="family">
+    <div class="wrap family-grid">
+      <div class="reveal">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">離れて暮らすご家族の方へ</p>
+          <h2 id="family">おばあちゃんに、お水と「元気？」を届けます</h2>
+          <p>ご家族の方からのご注文で、高齢のご両親や祖父母のお宅にお水をお届けできます。お届けのときにお顔を見て、ご様子を簡単にお伝えします。</p>
+        </div>
+        <ul class="family-list">
+          <li>ご注文はご家族の方からのお電話でOK</li>
+          <li>重たい水を玄関先までお届け</li>
+          <li>お届けのときのご様子を、ご家族へ簡単にお伝え</li>
+        </ul>
+        <p class="family-note">※お声がけ程度の簡易的なものです。医療・介護の見守りサービスではありません。</p>
+      </div>
+      <div class="phone-mock reveal" aria-label="ご様子のお伝えのイメージ">
+        <p class="bar">ウォーターデリバリー</p>
+        <p class="msg them">本日、お母さまのお宅に2L×4ケースをお届けしました。<time>水曜 10:24</time></p>
+        <p class="msg them">お元気そうで「寒くなってきたね」とお話しされていました。<time>水曜 10:25</time></p>
+        <p class="msg me">ありがとうございます！安心しました。<time>水曜 10:40</time></p>
+        <span class="msg them typing" aria-hidden="true"><i></i><i></i><i></i></span>
+        <p class="ex">※お伝えのイメージです</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="cmp">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">ウォーターサーバーとのちがい</p>
+        <h2 id="cmp">使いたいときだけ、気軽に。</h2>
+      </div>
+      <div class="cmp-box reveal">
+        <table class="cmp">
+          <thead><tr><th></th><th>一般的なウォーターサーバー</th><th class="us">ウォーターデリバリー</th></tr></thead>
+          <tbody>
+            <tr><td>契約</td><td>定期契約が必要なことが多い</td><td class="us">契約なし</td></tr>
+            <tr><td>解約</td><td>手続きや解約金がかかる場合も</td><td class="us">そもそも解約がありません</td></tr>
+            <tr><td>注文</td><td>決まったペースで届く</td><td class="us">必要なときに必要な分だけ</td></tr>
+            <tr><td>置き場所</td><td>サーバーを置く場所と電気代</td><td class="us">いりません</td></tr>
+            <tr><td>料金</td><td>プランによる</td><td class="us">2L 1本110円（税込）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cmp-note">※ウォーターサーバーの条件はサービスによって異なります。</p>
     </div>
   </section>
 
@@ -462,7 +576,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="faq">
         <details open><summary>何本から届けてもらえますか？</summary><p>2Lペットボトル4ケース（24本・2,640円）からお届けします。配達料は無料です。</p></details>
         <details><summary>どんな支払い方法がありますか？</summary><p>お受け取りのときに、現金・PayPay・クレジットカードでお支払いいただけます。</p></details>
-        <details><summary>定期的に届けてもらうことはできますか？</summary><p>はい。「毎週水曜日に4ケース」のように決めていただければ、毎回ご連絡いただかなくてもお届けします。</p></details>
+        <details><summary>離れて暮らす親の家に届けてもらえますか？</summary><p>はい。配達エリア内であれば、ご家族の方からのお電話でご注文いただけます。お届けのときのご様子も簡単にお伝えします。</p></details>
+        <details><summary>ウォーターサーバーのような契約は必要ですか？</summary><p>いいえ、契約はありません。必要なときにお電話いただくだけで、解約の手続きもありません。</p></details>
+        <details><summary>定期的に届けてもらうことはできますか？</summary><p>はい。ご希望があれば「毎週水曜日に4ケース」のように決めてお届けすることもできます。やめたいときはお電話一本でやめられます。</p></details>
         <details><summary>留守のときはどうなりますか？</summary><p>事前にご指定いただければ、玄関前などに置いてお届けすることもできます。</p></details>
         <details><summary>注文してから何日で届きますか？</summary><p>ご注文から3日ほどお時間をいただき、その後の水曜日（9:00〜20:00）にお届けします。</p></details>
       </div>
@@ -477,7 +593,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">ご注文・お問い合わせ</p>
-        <h2 id="contact-h">お気軽にお電話ください</h2>
+        <h2 id="contact-h">ご本人からも、ご家族からも。<br>お気軽にお電話ください</h2>
         <p>「お名前・ご住所・ケース数・ご希望日」をお伝えいただくとスムーズです。</p>
       </div>
       <div class="contact-grid">
@@ -586,9 +702,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       b.y -= b.s; b.w += 0.02; var x = b.x + Math.sin(b.w) * 8 * dpr;
       if (b.y < -20 * dpr) bubbles[i] = make(false);
       ctx.beginPath(); ctx.arc(x, b.y, b.r, 0, 6.283);
-      ctx.strokeStyle = 'rgba(255,255,255,' + b.a + ')'; ctx.lineWidth = 1.2 * dpr; ctx.stroke();
+      ctx.strokeStyle = 'rgba(10,134,173,' + (b.a + 0.1) + ')'; ctx.lineWidth = 1.2 * dpr; ctx.stroke();
       ctx.beginPath(); ctx.arc(x - b.r * 0.35, b.y - b.r * 0.35, b.r * 0.25, 0, 6.283);
-      ctx.fillStyle = 'rgba(255,255,255,' + (b.a + 0.15) + ')'; ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,' + (b.a + 0.4) + ')'; ctx.fill();
     });
     requestAnimationFrame(draw);
   }
