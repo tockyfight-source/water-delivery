@@ -11,159 +11,255 @@
 <title>ウォーターデリバリー｜門真・東大阪・大東・鶴見区の水の宅配</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <style>
-/* Layout: 縦一列のLP。上から「価格の約束 → 配達エリア → 注文の流れ → 料金例 → よくある質問 → お問い合わせ」。帯ごとに背景を切り替える */
+/* Layout: 深い水色のヒーロー（泡・波・揺れるボトル）→ 流れるテロップ帯 → 理由 → エリア（走るトラック）→ 流れ → 料金 → FAQ → 連絡先。スマホは下部に電話バー固定 */
 :root {
-  --bg: #f6fafb;
+  --bg: #f4f9fb;
   --surface: #ffffff;
-  --ink: #12303a;
-  --muted: #557079;
-  --line: #d6e4e8;
-  --water: #0b7fa3;
-  --water-deep: #075a75;
-  --water-soft: #e2f2f7;
-  --accent: #f2b418;
-  --ph-bg: #fff3c4;
-  --ph-ink: #7a5600;
+  --ink: #102c36;
+  --muted: #4f6a73;
+  --line: #d3e3e8;
+  --water: #0a86ad;
+  --water-deep: #06506a;
+  --water-night: #04384b;
+  --water-soft: #e0f1f7;
+  --aqua: #5fd3f0;
+  --accent: #ffc21a;
+  --on-deep: #ffffff;
   --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", sans-serif;
   --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0c1a1f; --surface: #12262d; --ink: #e4f1f4; --muted: #9db6bd; --line: #24414a;
-    --water: #4cc0e4; --water-deep: #0e4a5e; --water-soft: #163640; --accent: #f5c443;
-    --ph-bg: #3d3214; --ph-ink: #f5d27a; color-scheme: dark;
+    --bg: #0b1a20; --surface: #11252c; --ink: #e3f1f5; --muted: #9bb5bd; --line: #23414a;
+    --water: #4cc3e8; --water-deep: #073f53; --water-night: #032a38; --water-soft: #15343e; --aqua: #7fe0f7; --accent: #ffcb3d;
+    color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0c1a1f; --surface: #12262d; --ink: #e4f1f4; --muted: #9db6bd; --line: #24414a;
-  --water: #4cc0e4; --water-deep: #0e4a5e; --water-soft: #163640; --accent: #f5c443;
-  --ph-bg: #3d3214; --ph-ink: #f5d27a; color-scheme: dark;
+  --bg: #0b1a20; --surface: #11252c; --ink: #e3f1f5; --muted: #9bb5bd; --line: #23414a;
+  --water: #4cc3e8; --water-deep: #073f53; --water-night: #032a38; --water-soft: #15343e; --aqua: #7fe0f7; --accent: #ffcb3d;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
 img { max-width: 100%; }
-:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-.tel-link { color: inherit; text-decoration: none; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.85; }
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.35; text-wrap: balance; margin: 0; }
+:root { padding-top: env(safe-area-inset-top, 0px); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.85; overflow-x: hidden; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.3; text-wrap: balance; margin: 0; }
 p { margin: 0; }
 a { color: var(--water); }
-a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.band { padding-block: 72px; }
-.band.alt { background: var(--surface); border-block: 1px solid var(--line); }
-.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: var(--water); }
-.sec-head { display: grid; gap: 8px; margin-bottom: 36px; }
-.sec-head h2 { font-size: clamp(24px, 4vw, 32px); }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.band { padding-block: 84px; position: relative; }
+.band.alt { background: var(--surface); }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: var(--water); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 40px; }
+.sec-head h2 { font-size: clamp(26px, 4.4vw, 38px); font-weight: 900; }
 .sec-head p { color: var(--muted); max-width: 60ch; }
-.ph { background: var(--ph-bg); color: var(--ph-ink); padding: 0 .35em; border-radius: 4px; font-weight: 700; white-space: nowrap; }
+
+main { overflow-x: clip; }
 
 /* header */
-.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
-.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--water-night); }
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: color-mix(in srgb, var(--water-night) 88%, transparent); backdrop-filter: blur(10px); color: var(--on-deep); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
 .logo { font-family: var(--font-display); font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 8px; }
-.logo svg { width: 22px; height: 28px; flex: none; }
-.head-tel { font-weight: 700; font-size: 15px; text-align: right; line-height: 1.3; }
-.head-tel small { display: block; font-size: 11px; color: var(--muted); font-weight: 500; }
+.logo svg { width: 20px; height: 26px; flex: none; animation: drip 2.8s ease-in-out infinite; }
+.head-tel { font-weight: 700; font-size: 15px; text-align: right; line-height: 1.3; color: inherit; text-decoration: none; }
+.head-tel small { display: block; font-size: 11px; opacity: .75; font-weight: 500; }
 
 /* hero */
-.hero { padding-block: 56px 64px; overflow: hidden; }
-.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
-.hero-copy { display: grid; gap: 20px; min-width: 0; }
-.hero h1 { font-size: clamp(30px, 5.4vw, 50px); font-weight: 900; }
-.hero h1 em { font-style: normal; color: var(--water); }
-.hero-lead { color: var(--muted); font-size: 17px; max-width: 34em; }
+.hero { position: relative; overflow: hidden; color: var(--on-deep); background: radial-gradient(120% 90% at 80% 10%, #0f9cc6 0%, var(--water-deep) 45%, var(--water-night) 100%); padding-block: 64px 150px; isolation: isolate; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: center; }
+.hero-copy { display: grid; gap: 22px; min-width: 0; }
+.hero .eyebrow { color: var(--aqua); }
+.hero h1 { font-size: clamp(36px, 6.6vw, 68px); font-weight: 900; letter-spacing: .01em; }
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line > span { display: inline-block; animation: rise .9s cubic-bezier(.2,.8,.2,1) both; }
+.hero h1 .line:nth-child(2) > span { animation-delay: .15s; }
+.hero h1 em { font-style: normal; color: var(--accent); position: relative; }
+.hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .14em; background: var(--accent); border-radius: 99px; transform-origin: left; animation: swipe .8s .9s cubic-bezier(.2,.8,.2,1) both; opacity: .5; }
+.hero-lead { font-size: 17px; max-width: 32em; opacity: .9; animation: fadeup .8s .35s both; }
 .area-pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-.area-pills li { border: 1.5px solid var(--water); color: var(--water); border-radius: 999px; padding: 2px 14px; font-weight: 700; font-size: 14px; }
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; padding: 14px 24px; border-radius: 12px; font-size: 16px; }
-.btn.primary { background: var(--water); color: #fff; }
-.btn.line { background: #06c755; color: #fff; }
+.area-pills li { border: 1.5px solid rgba(255,255,255,.55); border-radius: 999px; padding: 3px 14px; font-weight: 700; font-size: 14px; animation: pop .5s both; }
+.area-pills li:nth-child(1) { animation-delay: .5s; } .area-pills li:nth-child(2) { animation-delay: .6s; }
+.area-pills li:nth-child(3) { animation-delay: .7s; } .area-pills li:nth-child(4) { animation-delay: .8s; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; animation: fadeup .8s .7s both; }
+.btn { position: relative; display: inline-flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; padding: 16px 26px; border-radius: 999px; font-size: 17px; transition: transform .2s, box-shadow .2s; }
+.btn:hover { transform: translateY(-3px); }
+.btn.call { background: var(--accent); color: #2b1d00; box-shadow: 0 10px 30px -8px rgba(255,194,26,.7); }
+.btn.call::before { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 2px solid var(--accent); animation: ring 2s ease-out infinite; }
+.btn svg { width: 20px; height: 20px; flex: none; }
 
-.price-card { position: relative; background: var(--water-deep); color: #fff; border-radius: 28px; padding: 36px 28px 32px; text-align: center; isolation: isolate; overflow: hidden; }
-.price-card::before { content: ""; position: absolute; inset: auto -20% -40% -20%; height: 70%; background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.18), transparent 70%); z-index: -1; }
-.price-card .unit { font-size: 15px; letter-spacing: .1em; opacity: .9; }
-.price-card .yen { font-family: var(--font-display); font-weight: 900; font-size: clamp(72px, 13vw, 112px); line-height: 1; font-variant-numeric: tabular-nums; }
-.price-card .yen span { font-size: .32em; margin-left: 4px; }
-.price-card .tax { display: inline-block; margin-top: 10px; background: var(--accent); color: #2a1f00; font-weight: 700; border-radius: 999px; padding: 2px 16px; font-size: 14px; }
-.price-card .note { margin-top: 16px; font-size: 13px; opacity: .85; }
-.price-card canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.hero-visual { position: relative; display: grid; place-items: center; min-height: 360px; }
+.bottle { width: min(170px, 42vw); height: auto; animation: bob 4s ease-in-out infinite; filter: drop-shadow(0 30px 30px rgba(0,0,0,.25)); }
+.bottle .water-surface { animation: slosh 3s ease-in-out infinite; transform-origin: 50% 50%; }
+.price-badge { position: absolute; right: 2%; top: 4%; width: 168px; height: 168px; border-radius: 50%; background: var(--accent); color: #2b1d00; display: grid; place-content: center; text-align: center; transform: rotate(8deg); animation: badge 1s .4s cubic-bezier(.3,1.6,.5,1) both, wobble 5s 1.4s ease-in-out infinite; box-shadow: 0 14px 30px -10px rgba(0,0,0,.4); }
+.price-badge small { font-size: 13px; font-weight: 700; }
+.price-badge b { font-family: var(--font-display); font-weight: 900; font-size: 60px; line-height: 1; font-variant-numeric: tabular-nums; }
+.price-badge b .u { font-size: 20px; }
+.free-tag { position: absolute; left: 0; bottom: 8%; background: var(--surface); color: var(--ink); border-radius: 14px; padding: 10px 16px; font-weight: 700; font-size: 14px; line-height: 1.4; box-shadow: 0 14px 30px -12px rgba(0,0,0,.4); animation: fadeup .8s 1s both, float 6s 1.8s ease-in-out infinite; }
+.free-tag strong { color: var(--water); font-size: 18px; display: block; }
+
+.waves { position: absolute; left: 0; right: 0; bottom: -1px; height: 120px; pointer-events: none; }
+.waves svg { position: absolute; bottom: 0; width: 200%; height: 100%; }
+.waves .w1 { fill: var(--bg); opacity: .35; animation: drift 14s linear infinite; }
+.waves .w2 { fill: var(--bg); opacity: .6; animation: drift 9s linear infinite reverse; }
+.waves .w3 { fill: var(--bg); animation: drift 6s linear infinite; }
+
+/* marquee */
+.ticker { background: var(--accent); color: #2b1d00; overflow: hidden; transform: rotate(-1.5deg); margin: -10px -2% 0; position: relative; z-index: 2; box-shadow: 0 10px 24px -14px rgba(0,0,0,.4); }
+.ticker-track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
+.ticker span { font-family: var(--font-display); font-weight: 900; font-size: 20px; padding: 12px 22px; white-space: nowrap; }
+.ticker span::after { content: "●"; margin-left: 44px; font-size: 10px; vertical-align: middle; color: var(--water-deep); }
+
+/* reveal: 読める状態のまま、下から持ち上がるだけ */
+.reveal { transition: transform .9s cubic-bezier(.2,.8,.2,1); }
+.js .reveal.below { transform: translateY(48px) scale(.97); }
 
 /* points */
 .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.point { display: grid; gap: 10px; align-content: start; padding: 24px; border-radius: 18px; background: var(--water-soft); min-width: 0; }
-.point h3 { font-size: 19px; }
+.point { display: grid; gap: 12px; align-content: start; padding: 28px 24px; border-radius: 24px; background: var(--water-soft); min-width: 0; transition: transform .3s, box-shadow .3s; }
+.point:hover { transform: translateY(-6px) rotate(-.5deg); box-shadow: 0 20px 40px -24px rgba(6,80,106,.6); }
+.point h3 { font-size: 20px; }
 .point p { color: var(--muted); font-size: 15px; }
-.point .ico { width: 40px; height: 40px; color: var(--water); }
+.point .ico { width: 56px; height: 56px; border-radius: 18px; background: var(--water); color: #fff; display: grid; place-items: center; }
+.point:hover .ico svg { animation: jiggle .5s; }
+.point .ico svg { width: 30px; height: 30px; }
+.points .point:nth-child(2) { transition-delay: .08s; } .points .point:nth-child(3) { transition-delay: .16s; }
 
 /* area */
-.area-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
-.area-map { width: 100%; max-width: 100%; height: auto; }
-.area-map .city { fill: var(--water-soft); stroke: var(--water); stroke-width: 2; }
+.area-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px; align-items: center; }
+.area-map { width: 100%; max-width: 100%; height: auto; overflow: visible; }
+.area-map .city { fill: var(--water-soft); stroke: var(--water); stroke-width: 2; transition: fill .3s; }
+.area-map .city:hover { fill: color-mix(in srgb, var(--aqua) 45%, var(--water-soft)); }
 .area-map .city.osaka { fill: var(--surface); stroke: var(--line); stroke-dasharray: 4 4; }
-.area-map text { fill: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.area-map text { fill: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 17px; pointer-events: none; }
 .area-map text.sub { fill: var(--muted); font-size: 12px; font-weight: 500; }
-.area-list { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.area-map .route { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 2 12; animation: dash 1.2s linear infinite; }
+.area-map .home { fill: var(--water-deep); }
+.area-list { display: grid; list-style: none; margin: 0; padding: 0; }
 .area-list li { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.area-list b { font-family: var(--font-display); font-size: 19px; }
-.area-list span { color: var(--muted); font-size: 14px; text-align: right; }
+.area-list b { font-family: var(--font-display); font-size: 21px; }
+.area-list span { color: var(--muted); font-size: 14px; }
 .area-foot { margin-top: 16px; color: var(--muted); font-size: 14px; }
 
-/* steps */
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; padding: 0; margin: 0; counter-reset: s; }
-.steps li { counter-increment: s; position: relative; padding: 28px 24px 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg); display: grid; gap: 8px; align-content: start; min-width: 0; }
-.steps li::before { content: "STEP " counter(s); font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--water); }
-.steps h3 { font-size: 19px; }
-.steps p { color: var(--muted); font-size: 15px; }
+/* road with truck */
+.road { position: relative; height: 70px; margin-top: 48px; overflow: hidden; }
+.road::after { content: ""; position: absolute; left: 0; right: 0; bottom: 14px; height: 4px; background: repeating-linear-gradient(90deg, var(--line) 0 28px, transparent 28px 48px); }
+.truck { position: absolute; bottom: 16px; left: 0; width: 120px; height: auto; animation: drive 9s linear infinite; }
+.truck .wheel { animation: spin .6s linear infinite; transform-box: fill-box; transform-origin: center; }
 
-/* price table */
-.table-box { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 420px; }
-th, td { padding: 14px 20px; text-align: left; border-bottom: 1px solid var(--line); }
-tr:last-child td { border-bottom: 0; }
-th { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: .05em; background: var(--water-soft); }
-td.num { text-align: right; font-weight: 700; font-size: 18px; }
-th.num { text-align: right; }
-.calc { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 20px 24px; border-radius: 16px; background: var(--water-soft); }
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; padding: 0; margin: 0; counter-reset: s; position: relative; }
+.steps li { counter-increment: s; position: relative; padding: 28px 24px 24px; border-radius: 24px; background: var(--bg); border: 1px solid var(--line); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.steps li::before { content: counter(s); font-family: var(--font-display); font-weight: 900; font-size: 22px; color: #fff; width: 48px; height: 48px; border-radius: 50%; background: var(--water); display: grid; place-items: center; margin-bottom: 6px; box-shadow: 0 0 0 0 color-mix(in srgb, var(--water) 50%, transparent); animation: pulse 2.4s infinite; }
+.steps li:nth-child(2)::before { animation-delay: .8s; } .steps li:nth-child(3)::before { animation-delay: 1.6s; }
+.steps h3 { font-size: 20px; }
+.steps p { color: var(--muted); font-size: 15px; }
+.steps li:nth-child(2) { transition-delay: .1s; } .steps li:nth-child(3) { transition-delay: .2s; }
+
+/* price */
+.price-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-bottom: 28px; }
+.price-hero .big { font-family: var(--font-display); font-weight: 900; font-size: clamp(56px, 10vw, 96px); line-height: 1; color: var(--water); font-variant-numeric: tabular-nums; }
+.price-hero .big span { font-size: .35em; }
+.price-hero .tax { background: var(--accent); color: #2b1d00; font-weight: 700; border-radius: 999px; padding: 2px 14px; font-size: 14px; }
+.cases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.case { border-radius: 20px; border: 2px solid var(--line); background: var(--surface); padding: 20px 16px; display: grid; gap: 6px; text-align: center; transition: transform .25s, border-color .25s; min-width: 0; }
+.case:hover { transform: translateY(-5px); border-color: var(--water); }
+.case .c { font-family: var(--font-display); font-weight: 900; font-size: 22px; }
+.case .n { color: var(--muted); font-size: 14px; }
+.case .y { font-family: var(--font-display); font-weight: 900; font-size: 26px; color: var(--water); font-variant-numeric: tabular-nums; }
+.case.first { border-color: var(--water); position: relative; }
+.case.first::before { content: "ここから注文OK"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--water); color: #fff; font-size: 12px; font-weight: 700; padding: 1px 12px; border-radius: 99px; white-space: nowrap; }
+.calc { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 22px 24px; border-radius: 20px; background: var(--water-soft); }
 .calc label { font-weight: 700; }
-.calc input { width: 6em; font: inherit; font-size: 18px; padding: 6px 10px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); text-align: right; }
-.calc output { font-family: var(--font-display); font-weight: 900; font-size: 26px; color: var(--water); font-variant-numeric: tabular-nums; }
-.conditions { margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.conditions div { padding: 16px 20px; border-left: 3px solid var(--water); background: var(--surface); }
+.stepper { display: inline-flex; align-items: center; border-radius: 999px; background: var(--surface); border: 1.5px solid var(--line); overflow: hidden; }
+.stepper button { width: 44px; height: 44px; border: 0; background: transparent; color: var(--water); font-size: 22px; font-weight: 700; cursor: pointer; }
+.stepper button:active { transform: scale(.85); }
+.stepper input { width: 3.2em; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 20px; font-weight: 700; text-align: center; -moz-appearance: textfield; }
+.stepper input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.calc output { font-family: var(--font-display); font-weight: 900; font-size: 28px; color: var(--water); font-variant-numeric: tabular-nums; display: inline-block; }
+.calc output.bump { animation: bump .35s; }
+.conditions { margin: 28px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.conditions div { padding: 16px 20px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
 .conditions dt { font-size: 13px; color: var(--muted); font-weight: 700; }
 .conditions dd { margin: 4px 0 0; font-weight: 700; }
 
 /* faq */
-.faq { display: grid; gap: 12px; max-width: 760px; }
-.faq details { border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
-.faq summary { cursor: pointer; padding: 18px 20px; font-weight: 700; list-style: none; display: flex; gap: 12px; }
+.faq { display: grid; gap: 12px; max-width: 780px; }
+.faq details { border: 1px solid var(--line); border-radius: 18px; background: var(--bg); transition: border-color .2s; }
+.faq details[open] { border-color: var(--water); }
+.faq summary { cursor: pointer; padding: 18px 20px; font-weight: 700; list-style: none; display: flex; gap: 12px; align-items: baseline; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::before { content: "Q"; font-family: var(--font-display); color: var(--water); font-weight: 900; }
-.faq details p { padding: 0 20px 18px 46px; color: var(--muted); }
+.faq summary::after { content: "+"; margin-left: auto; color: var(--water); font-size: 22px; line-height: 1; transition: transform .3s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 20px 18px 46px; color: var(--muted); animation: fadeup .4s both; }
 
 /* contact */
-.contact { background: var(--water-deep); color: #fff; }
+.contact { color: var(--on-deep); background: linear-gradient(160deg, var(--water-deep), var(--water-night)); overflow: hidden; isolation: isolate; }
+.contact .bubble { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), rgba(255,255,255,.04)); z-index: -1; animation: up 12s linear infinite; bottom: -120px; }
 .contact .eyebrow { color: var(--accent); }
-.contact .sec-head p { color: rgba(255,255,255,.8); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.contact-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 18px; padding: 24px; display: grid; gap: 8px; min-width: 0; }
-.contact-card h3 { font-size: 16px; opacity: .85; }
-.contact-card .big { font-family: var(--font-display); font-size: clamp(24px, 4vw, 30px); font-weight: 900; word-break: break-all; }
-.contact-card small { opacity: .75; }
-.contact .ph { background: var(--accent); color: #2a1f00; }
-.copy { justify-self: start; font: inherit; font-size: 13px; font-weight: 700; background: #fff; color: var(--water-deep); border: 0; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+.contact .sec-head p { color: rgba(255,255,255,.82); }
+.contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+.contact-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 24px; padding: 28px; display: grid; gap: 10px; min-width: 0; backdrop-filter: blur(4px); }
+.contact-card h3 { font-size: 15px; opacity: .85; }
+.contact-card .big { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); font-weight: 900; word-break: break-all; line-height: 1.2; }
+.contact-card .addr { font-family: var(--font-display); font-size: clamp(18px, 3vw, 22px); font-weight: 700; }
+.contact-card small { opacity: .78; }
+.tel-link { color: inherit; text-decoration: none; }
+.copy { justify-self: start; font: inherit; font-size: 13px; font-weight: 700; background: #fff; color: var(--water-deep); border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; }
 
-footer { padding-block: 32px; font-size: 13px; color: var(--muted); }
+footer { padding-block: 32px 110px; font-size: 13px; color: var(--muted); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
 
-@media (max-width: 820px) {
+/* mobile call bar */
+.callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--water-night) 94%, transparent); backdrop-filter: blur(8px); }
+.callbar a { display: flex; justify-content: center; align-items: center; gap: 10px; background: var(--accent); color: #2b1d00; font-weight: 900; font-family: var(--font-display); font-size: 18px; text-decoration: none; border-radius: 999px; padding: 12px; }
+.callbar svg { width: 20px; height: 20px; animation: jiggle 1.6s infinite; }
+
+@keyframes rise { from { transform: translateY(110%); } to { transform: none; } }
+@keyframes fadeup { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes pop { from { opacity: 0; transform: scale(.6); } 70% { transform: scale(1.08); } to { opacity: 1; transform: none; } }
+@keyframes swipe { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ring { from { transform: scale(1); opacity: .9; } to { transform: scale(1.25, 1.6); opacity: 0; } }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-18px) rotate(4deg); } }
+@keyframes slosh { 0%,100% { transform: skewY(-4deg); } 50% { transform: skewY(4deg); } }
+@keyframes badge { from { transform: scale(0) rotate(-60deg); } to { transform: scale(1) rotate(8deg); } }
+@keyframes wobble { 0%,100% { transform: rotate(8deg); } 50% { transform: rotate(-4deg) scale(1.04); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes drip { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(2px) scale(.92, 1.08); } }
+@keyframes jiggle { 0%,100% { transform: rotate(0); } 20% { transform: rotate(-14deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-8deg); } 80% { transform: rotate(4deg); } }
+@keyframes dash { to { stroke-dashoffset: -14; } }
+@keyframes drive { from { transform: translateX(-140px); } to { transform: translateX(calc(100vw + 20px)); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--water) 55%, transparent); } 70%,100% { box-shadow: 0 0 0 16px transparent; } }
+@keyframes bump { 50% { transform: scale(1.18); } }
+@keyframes up { from { transform: translateY(0); } to { transform: translateY(-900px); } }
+
+@media (max-width: 860px) {
   .hero-grid, .area-grid, .contact-grid { grid-template-columns: 1fr; }
   .points, .steps { grid-template-columns: 1fr; }
-  .band { padding-block: 56px; }
+  .cases { grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
+  .band { padding-block: 64px; }
+  .hero { padding-block: 40px 130px; }
+  .hero-visual { min-height: 300px; }
+  .price-badge { width: 136px; height: 136px; right: 0; }
+  .price-badge b { font-size: 48px; }
+  .callbar { display: block; }
 }
 @media (max-width: 480px) {
   .head-tel small { display: none; }
   .logo { font-size: 16px; }
+  .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal.below { transform: none; }
 }
 </style>
 </head>
@@ -171,56 +267,90 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <header class="site-head">
   <div class="wrap">
     <div class="logo">
-      <svg viewBox="0 0 22 28" aria-hidden="true"><path d="M11 1C11 1 2 12 2 18a9 9 0 0 0 18 0C20 12 11 1 11 1Z" fill="currentColor" style="color:var(--water)"/></svg>
+      <svg viewBox="0 0 22 28" aria-hidden="true"><path d="M11 1C11 1 2 12 2 18a9 9 0 0 0 18 0C20 12 11 1 11 1Z" fill="#5fd3f0"/></svg>
       <span>ウォーターデリバリー</span>
     </div>
-    <div class="head-tel"><small>ご注文・お問い合わせ</small><a class="tel-link" href="tel:08044859115">080-4485-9115</a></div>
+    <a class="head-tel" href="tel:08044859115"><small>ご注文・お問い合わせ（24時間）</small>080-4485-9115</a>
   </div>
 </header>
 
 <main>
   <section class="hero">
+    <canvas id="bubbles" aria-hidden="true"></canvas>
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">門真・東大阪・大東・鶴見区のお水屋さん</p>
-        <h1>重たいお水は、<br><em>玄関まで</em>お届けします。</h1>
-        <p class="hero-lead">2Lペットボトルの水を、1本110円（税込）でご自宅までお届け。4ケース以上で配達料は無料です。スーパーから重い箱を運ぶ手間がなくなります。</p>
+        <h1><span class="line"><span>重たいお水は、</span></span><span class="line"><span><em>玄関まで</em>お届け！</span></span></h1>
+        <p class="hero-lead">2Lペットボトルの水を、1本110円（税込）でご自宅までお届け。4ケース以上で配達料は無料です。スーパーから重い箱を運ぶのは、もう終わりにしましょう。</p>
         <ul class="area-pills" aria-label="配達エリア">
           <li>門真市</li><li>東大阪市</li><li>大東市</li><li>大阪市鶴見区</li>
         </ul>
         <div class="cta-row">
-          <a class="btn primary" href="tel:08044859115">電話で注文する　080-4485-9115</a>
+          <a class="btn call" href="tel:08044859115">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1Z"/></svg>
+            電話で注文 080-4485-9115
+          </a>
         </div>
       </div>
-      <div class="price-card" aria-label="価格">
-        <canvas id="ripple" aria-hidden="true"></canvas>
-        <p class="unit">2Lペットボトル 1本</p>
-        <p class="yen">110<span>円</span></p>
-        <p class="tax">消費税込み</p>
-        <p class="note">4ケース（24本）以上で配達料無料</p>
+      <div class="hero-visual">
+        <svg class="bottle" viewBox="0 0 120 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#dff6fd" stop-opacity=".85"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".55"/><stop offset="1" stop-color="#bfe9f7" stop-opacity=".85"/></linearGradient>
+            <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fe0f7"/><stop offset="1" stop-color="#1aa7d1"/></linearGradient>
+            <clipPath id="bodyclip"><path d="M44 30h32v22c0 10 24 22 24 48v178c0 8-6 14-14 14H34c-8 0-14-6-14-14V100c0-26 24-38 24-48Z"/></clipPath>
+          </defs>
+          <rect x="42" y="6" width="36" height="22" rx="5" fill="#0a86ad"/>
+          <rect x="42" y="14" width="36" height="3" fill="#06506a"/>
+          <path d="M44 30h32v22c0 10 24 22 24 48v178c0 8-6 14-14 14H34c-8 0-14-6-14-14V100c0-26 24-38 24-48Z" fill="url(#glass)" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
+          <g clip-path="url(#bodyclip)">
+            <g class="water-surface"><rect x="0" y="96" width="120" height="210" fill="url(#liquid)"/><ellipse cx="60" cy="96" rx="60" ry="6" fill="#aef0ff"/></g>
+            <rect x="20" y="150" width="80" height="62" fill="#ffffff"/>
+            <text x="60" y="178" text-anchor="middle" font-family="Zen Maru Gothic, sans-serif" font-weight="900" font-size="22" fill="#06506a">2L</text>
+            <text x="60" y="200" text-anchor="middle" font-family="Zen Kaku Gothic New, sans-serif" font-weight="700" font-size="9.5" fill="#0a86ad">NATURAL WATER</text>
+            <rect x="30" y="110" width="6" height="150" rx="3" fill="#ffffff" opacity=".5"/>
+          </g>
+        </svg>
+        <div class="price-badge" aria-label="1本110円 税込">
+          <small>2L 1本</small>
+          <b><span id="count">110</span><span class="u">円</span></b>
+          <small>税込</small>
+        </div>
+        <p class="free-tag">4ケース（24本）以上<strong>配達料 無料</strong></p>
       </div>
+    </div>
+    <div class="waves" aria-hidden="true">
+      <svg class="w1" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 60 Q 180 10 360 60 T 720 60 T 1080 60 T 1440 60 V120 H0Z"/></svg>
+      <svg class="w2" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 75 Q 120 35 240 75 T 480 75 T 720 75 T 960 75 T 1200 75 T 1440 75 V120 H0Z"/></svg>
+      <svg class="w3" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 90 Q 90 70 180 90 T 360 90 T 540 90 T 720 90 T 900 90 T 1080 90 T 1260 90 T 1440 90 V120 H0Z"/></svg>
     </div>
   </section>
 
-  <section class="band alt" aria-labelledby="why">
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>2L 1本110円（税込）</span><span>4ケース以上 配達料無料</span><span>門真市・東大阪市・大東市・鶴見区</span><span>毎週水曜日にお届け</span><span>電話受付24時間</span>
+      <span>2L 1本110円（税込）</span><span>4ケース以上 配達料無料</span><span>門真市・東大阪市・大東市・鶴見区</span><span>毎週水曜日にお届け</span><span>電話受付24時間</span>
+    </div>
+  </div>
+
+  <section class="band" aria-labelledby="why">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="eyebrow">選ばれる理由</p>
         <h2 id="why">わかりやすい価格と、地元ならではの近さ</h2>
       </div>
       <div class="points">
-        <div class="point">
-          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M14 13l6 8 6-8M13 21h14M13 26h14M20 21v9"/></svg>
+        <div class="point reveal">
+          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M14 13l6 8 6-8M13 21h14M13 26h14M20 21v9"/></svg></div>
           <h3>1本110円、税込みで明朗</h3>
           <p>本数×110円がそのままお支払い額。あとから税金が上乗せされることはありません。</p>
         </div>
-        <div class="point">
-          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19L20 7l14 12"/><path d="M10 16v17h20V16"/><path d="M17 33v-9h6v9"/></svg>
+        <div class="point reveal">
+          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19L20 7l14 12"/><path d="M10 16v17h20V16"/><path d="M17 33v-9h6v9"/></svg></div>
           <h3>玄関先までお届け</h3>
           <p>マンションの上の階でも大丈夫。重たい箱を持ち運ぶ必要はありません。</p>
         </div>
-        <div class="point">
-          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 35s11-10 11-19a11 11 0 0 0-22 0c0 9 11 19 11 19Z"/><circle cx="20" cy="16" r="4"/></svg>
+        <div class="point reveal">
+          <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 35s11-10 11-19a11 11 0 0 0-22 0c0 9 11 19 11 19Z"/><circle cx="20" cy="16" r="4"/></svg></div>
           <h3>エリアを絞った地域密着</h3>
           <p>門真市・東大阪市・大東市・鶴見区に限定しているので、小回りのきくお届けができます。</p>
         </div>
@@ -228,87 +358,104 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
   </section>
 
-  <section class="band" aria-labelledby="area">
-    <div class="wrap area-grid">
-      <div>
-        <div class="sec-head">
-          <p class="eyebrow">配達エリア</p>
-          <h2 id="area">この4つの地域にお届けします</h2>
+  <section class="band alt" aria-labelledby="area">
+    <div class="wrap">
+      <div class="area-grid">
+        <div class="reveal">
+          <div class="sec-head">
+            <p class="eyebrow">配達エリア</p>
+            <h2 id="area">この4つの地域にお届けします</h2>
+          </div>
+          <ul class="area-list">
+            <li><b>門真市</b><span>全域</span></li>
+            <li><b>東大阪市</b><span>全域</span></li>
+            <li><b>大東市</b><span>全域</span></li>
+            <li><b>大阪市鶴見区</b><span>全域</span></li>
+          </ul>
+          <p class="area-foot">エリア外の方もお気軽にご相談ください。</p>
         </div>
-        <ul class="area-list">
-          <li><b>門真市</b><span>全域</span></li>
-          <li><b>東大阪市</b><span>全域</span></li>
-          <li><b>大東市</b><span>全域</span></li>
-          <li><b>大阪市鶴見区</b><span>全域</span></li>
-        </ul>
-        <p class="area-foot">エリア外の方もお気軽にご相談ください。</p>
+        <svg class="area-map reveal" viewBox="0 0 440 340" role="img" aria-label="配達エリアの位置関係（イメージ）">
+          <path class="city osaka" d="M14 120 L104 104 L112 196 L22 214 Z"/>
+          <text class="sub" x="30" y="166">大阪市中心部</text>
+          <path class="city" d="M112 96 L196 84 L204 176 L120 188 Z"/>
+          <text x="132" y="142">鶴見区</text>
+          <path class="city" d="M196 40 L300 26 L312 120 L204 134 Z"/>
+          <text x="226" y="86">門真市</text>
+          <path class="city" d="M300 26 L420 40 L420 168 L312 170 Z"/>
+          <text x="338" y="106">大東市</text>
+          <path class="city" d="M120 188 L204 176 L204 134 L312 120 L312 170 L420 168 L420 312 L132 324 Z"/>
+          <text x="236" y="252">東大阪市</text>
+          <path class="route" d="M250 108 C 200 150, 160 150, 158 160 M250 108 C 300 120, 340 130, 362 132 M250 108 C 260 170, 270 200, 276 230"/>
+          <circle class="home" cx="250" cy="108" r="7"/>
+          <text class="sub" x="300" y="334">※位置関係のイメージです</text>
+        </svg>
       </div>
-      <svg class="area-map" viewBox="0 0 440 340" role="img" aria-label="配達エリアの位置関係（イメージ）">
-        <path class="city osaka" d="M14 120 L104 104 L112 196 L22 214 Z"/>
-        <text class="sub" x="34" y="166">大阪市中心部</text>
-        <path class="city" d="M112 96 L196 84 L204 176 L120 188 Z"/>
-        <text x="132" y="142">鶴見区</text>
-        <path class="city" d="M196 40 L300 26 L312 120 L204 134 Z"/>
-        <text x="226" y="86">門真市</text>
-        <path class="city" d="M300 26 L420 40 L420 168 L312 170 Z"/>
-        <text x="338" y="106">大東市</text>
-        <path class="city" d="M120 188 L204 176 L204 134 L312 120 L312 170 L420 168 L420 312 L132 324 Z"/>
-        <text x="236" y="252">東大阪市</text>
-        <text class="sub" x="300" y="334">※位置関係のイメージです</text>
-      </svg>
+      <div class="road" aria-hidden="true">
+        <svg class="truck" viewBox="0 0 120 60">
+          <rect x="2" y="8" width="72" height="36" rx="6" fill="#0a86ad"/>
+          <path d="M74 18h22l16 14v12H74Z" fill="#ffc21a"/>
+          <path d="M80 22h14l10 9H80Z" fill="#dff6fd"/>
+          <path d="M22 18c0 0-7 8-7 13a7 7 0 0 0 14 0c0-5-7-13-7-13Z" fill="#ffffff"/>
+          <text x="34" y="32" font-family="Zen Maru Gothic, sans-serif" font-weight="900" font-size="11" fill="#ffffff">お水便</text>
+          <g class="wheel"><circle cx="22" cy="46" r="9" fill="#102c36"/><circle cx="22" cy="46" r="3.5" fill="#d3e3e8"/><rect x="21" y="38" width="2" height="5" fill="#d3e3e8"/></g>
+          <g class="wheel"><circle cx="92" cy="46" r="9" fill="#102c36"/><circle cx="92" cy="46" r="3.5" fill="#d3e3e8"/><rect x="91" y="38" width="2" height="5" fill="#d3e3e8"/></g>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <section class="band alt" aria-labelledby="flow">
+  <section class="band" aria-labelledby="flow">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="eyebrow">ご注文の流れ</p>
         <h2 id="flow">お電話で、かんたん3ステップ</h2>
       </div>
       <ol class="steps">
-        <li><h3>ご注文</h3><p>お電話で「お名前・ご住所・本数・ご希望日」をお知らせください。</p></li>
-        <li><h3>お届け</h3><p>毎週水曜日の9:00〜20:00に、ご自宅の玄関先までお持ちします。</p></li>
-        <li><h3>お支払い</h3><p>お受け取りのときに、現金・PayPay・クレジットカードでお支払いください。</p></li>
+        <li class="reveal"><h3>お電話でご注文</h3><p>「お名前・ご住所・ケース数・ご希望日」をお知らせください。電話は24時間受け付けています。</p></li>
+        <li class="reveal"><h3>水曜日にお届け</h3><p>ご注文から3日ほどいただき、その後の水曜日 9:00〜20:00 に玄関先までお持ちします。</p></li>
+        <li class="reveal"><h3>受け取ってお支払い</h3><p>現金・PayPay・クレジットカードでお支払いいただけます。</p></li>
       </ol>
     </div>
   </section>
 
-  <section class="band" aria-labelledby="price">
+  <section class="band alt" aria-labelledby="price">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="eyebrow">料金</p>
         <h2 id="price">本数×110円。それだけです。</h2>
-        <p>2Lペットボトル1ケース6本入り。4ケース（24本）からのご注文で、配達料は無料です。表示はすべて消費税込みの金額です。</p>
+        <p>2Lペットボトル1ケース6本入り。4ケース（24本）からのご注文で、配達料は無料です。</p>
       </div>
-      <div class="table-box">
-        <table>
-          <thead><tr><th>ケース数</th><th>本数（2L）</th><th class="num">お支払い（税込）</th></tr></thead>
-          <tbody>
-            <tr><td>4ケース</td><td>24本</td><td class="num">2,640円</td></tr>
-            <tr><td>5ケース</td><td>30本</td><td class="num">3,300円</td></tr>
-            <tr><td>6ケース</td><td>36本</td><td class="num">3,960円</td></tr>
-            <tr><td>8ケース</td><td>48本</td><td class="num">5,280円</td></tr>
-          </tbody>
-        </table>
+      <div class="price-hero reveal">
+        <span class="big">110<span>円</span></span><span class="tax">1本あたり・税込</span>
       </div>
-      <div class="calc">
-        <label for="qty">ケース数を入れて計算</label>
-        <input id="qty" type="number" min="4" max="99" value="4" inputmode="numeric">
+      <div class="cases">
+        <div class="case first reveal"><span class="c">4ケース</span><span class="n">24本</span><span class="y">2,640円</span></div>
+        <div class="case reveal"><span class="c">5ケース</span><span class="n">30本</span><span class="y">3,300円</span></div>
+        <div class="case reveal"><span class="c">6ケース</span><span class="n">36本</span><span class="y">3,960円</span></div>
+        <div class="case reveal"><span class="c">8ケース</span><span class="n">48本</span><span class="y">5,280円</span></div>
+      </div>
+      <div class="calc reveal">
+        <label for="qty">ケース数を選んで計算</label>
+        <div class="stepper">
+          <button type="button" id="minus" aria-label="1ケース減らす">−</button>
+          <input id="qty" type="number" min="4" max="99" value="4" inputmode="numeric">
+          <button type="button" id="plus" aria-label="1ケース増やす">＋</button>
+        </div>
         <span>ケース ＝</span>
         <output id="total" for="qty">24本　2,640円</output>
       </div>
       <dl class="conditions">
-        <div><dt>最低注文本数</dt><dd>4ケース（24本）から</dd></div>
+        <div><dt>最低注文</dt><dd>4ケース（24本）から</dd></div>
         <div><dt>配達料</dt><dd>無料</dd></div>
-        <div><dt>配達曜日</dt><dd>毎週水曜日 9:00〜20:00</dd></div>
+        <div><dt>配達日</dt><dd>毎週水曜日 9:00〜20:00</dd></div>
         <div><dt>お支払い方法</dt><dd>現金・PayPay・クレジットカード</dd></div>
       </dl>
     </div>
   </section>
 
-  <section class="band alt" aria-labelledby="faq">
+  <section class="band" aria-labelledby="faq">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="eyebrow">よくあるご質問</p>
         <h2 id="faq">ご注文の前に</h2>
       </div>
@@ -323,23 +470,27 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </section>
 
   <section class="band contact" id="contact" aria-labelledby="contact-h">
+    <span class="bubble" style="left:8%;width:60px;height:60px;animation-duration:14s" aria-hidden="true"></span>
+    <span class="bubble" style="left:30%;width:24px;height:24px;animation-duration:9s;animation-delay:-3s" aria-hidden="true"></span>
+    <span class="bubble" style="left:62%;width:90px;height:90px;animation-duration:18s;animation-delay:-6s" aria-hidden="true"></span>
+    <span class="bubble" style="left:84%;width:36px;height:36px;animation-duration:11s;animation-delay:-2s" aria-hidden="true"></span>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <p class="eyebrow">ご注文・お問い合わせ</p>
-        <h2 id="contact-h">お気軽にご連絡ください</h2>
-        <p>お電話で「お名前・ご住所・ケース数・ご希望日」をお伝えいただくとスムーズです。</p>
+        <h2 id="contact-h">お気軽にお電話ください</h2>
+        <p>「お名前・ご住所・ケース数・ご希望日」をお伝えいただくとスムーズです。</p>
       </div>
       <div class="contact-grid">
-        <div class="contact-card">
-          <h3>お電話</h3>
+        <div class="contact-card reveal">
+          <h3>お電話（24時間受付）</h3>
           <p class="big"><a class="tel-link" id="tel-text" href="tel:08044859115">080-4485-9115</a></p>
-          <small>24時間いつでも受け付けています</small>
+          <small>LINE公式アカウントは準備中です</small>
           <button class="copy" type="button" data-copy="tel-text">番号をコピー</button>
         </div>
-        <div class="contact-card">
+        <div class="contact-card reveal">
           <h3>所在地</h3>
-          <p class="big" style="font-size:clamp(18px,3vw,22px)">大阪府門真市三ツ島5-23-14</p>
-          <small>LINE公式アカウントは準備中です</small>
+          <p class="addr">大阪府門真市三ツ島5-23-14</p>
+          <small>配達日：毎週水曜日 9:00〜20:00</small>
         </div>
       </div>
     </div>
@@ -353,19 +504,28 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </div>
 </footer>
 
+<div class="callbar"><a href="tel:08044859115"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1Z"/></svg>電話で注文する</a></div>
+
 <script>
 (function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 計算
   var qty = document.getElementById('qty');
   var total = document.getElementById('total');
   function update() {
-    var n = Math.max(0, Math.floor(Number(qty.value) || 0));
+    var n = Math.floor(Number(qty.value) || 0);
     total.textContent = n < 4 ? '4ケースからご注文いただけます' : (n * 6) + '本　' + (n * 6 * 110).toLocaleString('ja-JP') + '円';
+    total.classList.remove('bump'); void total.offsetWidth; total.classList.add('bump');
   }
+  function step(d) { qty.value = Math.min(99, Math.max(4, (Math.floor(Number(qty.value)) || 4) + d)); update(); }
   qty.addEventListener('input', update);
-  update();
+  document.getElementById('minus').addEventListener('click', function () { step(-1); });
+  document.getElementById('plus').addEventListener('click', function () { step(1); });
 
+  // コピー
   document.querySelectorAll('.copy').forEach(function (btn) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function (e) {
       var el = document.getElementById(btn.dataset.copy);
       var label = btn.textContent;
       function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = label; }, 1600); }
@@ -374,33 +534,65 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
         done('選択しました');
       }
-      try {
-        navigator.clipboard.writeText(el.textContent.trim()).then(function () { done('コピーしました'); }, fallback);
-      } catch (e) { fallback(); }
+      try { navigator.clipboard.writeText(el.textContent.trim()).then(function () { done('コピーしました'); }, fallback); }
+      catch (err) { fallback(); }
     });
   });
 
-  // 価格カードの背景に、ゆっくり広がる水の波紋
-  var c = document.getElementById('ripple');
-  var ctx = c.getContext('2d');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function size() { var r = c.getBoundingClientRect(); c.width = r.width * devicePixelRatio; c.height = r.height * devicePixelRatio; }
-  size(); window.addEventListener('resize', size);
-  function draw(t) {
-    ctx.clearRect(0, 0, c.width, c.height);
-    var cx = c.width * 0.5, cy = c.height * 0.55, max = Math.max(c.width, c.height) * 0.75;
-    for (var i = 0; i < 4; i++) {
-      var p = ((t / 5200) + i / 4) % 1;
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, p * max, p * max * 0.55, 0, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(255,255,255,' + (0.16 * (1 - p)) + ')';
-      ctx.lineWidth = 2 * devicePixelRatio;
-      ctx.stroke();
-    }
-    if (!reduce) requestAnimationFrame(draw);
+  if (reduce) return;
+
+  // 価格のカウントアップ
+  var count = document.getElementById('count');
+  var t0 = null;
+  function tick(t) {
+    if (!t0) t0 = t;
+    var p = Math.min(1, (t - t0) / 1100);
+    count.textContent = Math.round(110 * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick);
   }
-  draw(1300);
-  if (!reduce) requestAnimationFrame(draw);
+  setTimeout(function () { requestAnimationFrame(tick); }, 500);
+
+  // スクロールで下から持ち上がる（文字は常に読める状態）
+  document.documentElement.classList.add('js');
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var vh = window.innerHeight;
+    items.forEach(function (el) { if (el.getBoundingClientRect().top > vh) el.classList.add('below'); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove('below'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  // ヒーローの泡
+  var c = document.getElementById('bubbles');
+  var ctx = c.getContext('2d');
+  var dpr = Math.min(2, window.devicePixelRatio || 1);
+  var bubbles = [];
+  function size() {
+    var r = c.getBoundingClientRect();
+    c.width = r.width * dpr; c.height = r.height * dpr;
+    var n = Math.round(r.width / 22);
+    bubbles = [];
+    for (var i = 0; i < n; i++) bubbles.push(make(true));
+  }
+  function make(any) {
+    return { x: Math.random() * c.width, y: any ? Math.random() * c.height : c.height + 20 * dpr,
+      r: (2 + Math.random() * 9) * dpr, s: (0.3 + Math.random() * 1.1) * dpr, w: Math.random() * 6.28, a: 0.12 + Math.random() * 0.3 };
+  }
+  function draw() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    bubbles.forEach(function (b, i) {
+      b.y -= b.s; b.w += 0.02; var x = b.x + Math.sin(b.w) * 8 * dpr;
+      if (b.y < -20 * dpr) bubbles[i] = make(false);
+      ctx.beginPath(); ctx.arc(x, b.y, b.r, 0, 6.283);
+      ctx.strokeStyle = 'rgba(255,255,255,' + b.a + ')'; ctx.lineWidth = 1.2 * dpr; ctx.stroke();
+      ctx.beginPath(); ctx.arc(x - b.r * 0.35, b.y - b.r * 0.35, b.r * 0.25, 0, 6.283);
+      ctx.fillStyle = 'rgba(255,255,255,' + (b.a + 0.15) + ')'; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  size(); window.addEventListener('resize', size); draw();
 })();
 </script>
 </body>
